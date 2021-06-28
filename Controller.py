@@ -65,10 +65,19 @@ def run():
             if user_input == 3:
                 # edit music
                 music_title = View.get_music_title()
-                musics = Model.get_music_base_on_title(selected_play_list_id, music_title)
-                View.show_full_play_list_music_and_get_user_input(musics)
-                music_id = View.get_music_id()
-                music_data = View.get_updated_music_data_from_user()
+                musics = Model.get_music_by_title(selected_play_list_id, music_title)
+                answer = View.show_full_play_list_music_and_get_user_input(musics)
+                if answer == 'music_id':
+                    music_id = View.get_music_id()
+                    music_data = View.get_updated_music_data_from_user()
+                    music = Model.get_music_by_id(selected_play_list_id, music_id)
+                    music['title'] = music_data['title']
+                    music['artist'] = music_data['artist']
+                    music['album'] = music_data['album']
+                    if Model.update_music(selected_play_list_id, music):
+                        print('music updated successfully.')
+                    else:
+                        print('error eccurred in update music!')
 
             if user_input == 4:
                 # remove music
