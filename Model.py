@@ -98,13 +98,21 @@ def add_music_to_play_list(play_list_id, music_data):
     return False
 
 
-def get_music_base_on_title(play_list_id, title):
+def get_music_by_title(play_list_id, title):
     musics = get_music_of_play_list(play_list_id)
     filtered_musics = []
     if musics != None:
         filtered_musics = list(filter(lambda music: music['title'] == title, musics))
     
     return filtered_musics
+
+def get_music_by_id(play_list_id, music_id):
+    musics = get_music_of_play_list(play_list_id)
+    filtered_musics = []
+    if musics != None:
+        filtered_musics = list(filter(lambda music: music['id'] == music_id, musics))
+    
+    return filtered_musics[0] if len(filtered_musics) > 0 else None
 
 def update_music(play_list_id, music_data):
     musics = get_music_of_play_list(play_list_id)
