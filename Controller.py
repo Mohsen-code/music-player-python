@@ -81,7 +81,15 @@ def run():
 
             if user_input == 4:
                 # remove music
-                pass
+                music_title = View.get_music_title()
+                musics = Model.get_music_by_title(selected_play_list_id, music_title)
+                answer = View.show_full_play_list_music_and_get_user_input(musics)
+                if answer == 'music_id':
+                    music_id = View.get_music_id()
+                    if Model.remove_music(selected_play_list_id, music_id):
+                        print('music removed successfully.')
+                    else:
+                        print('error occurred in remove music!')
 
             if user_input == 5:
                 # play musics in order
