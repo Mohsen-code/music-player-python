@@ -124,9 +124,7 @@ def show_play_list_menu_and_get_user_input():
 def show_play_lists(play_lists):
     if len(play_lists) > 0:
         for (index, play_list) in enumerate(play_lists):
-            print(
-                f"\n{index + 1} - {play_list['title']}\n description: {play_list['description']} \n Create Date: {datetime.fromtimestamp(play_list['date'])} \n"
-            )
+            print(f"\n{index + 1} - {play_list['title']}\n description: {play_list['description']} \n Create Date: {datetime.datetime.fromtimestamp(play_list['date'])} \n")
     else:
         print("Play lists is empty")
 
