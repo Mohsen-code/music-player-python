@@ -1,0 +1,7 @@
+.vscode
+__pycache__
+output
+venv
+*.txt
+*.mp3
+*.json
