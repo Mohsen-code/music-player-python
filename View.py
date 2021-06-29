@@ -5,8 +5,6 @@ from pathlib import Path
 # from mutagen import File, mp3
 from tinytag import TinyTag
 
-invalid_code_status = None
-
 
 def show_main_menu_and_get_user_input():
     questions = [
@@ -200,7 +198,7 @@ def show_music_of_play_list(music_list):
     ]
 
     answers = inquirer.prompt(questions)
-    return answers
+    return answers['paly_list_music_menu']
 
 def get_music_title():
     questions = [
